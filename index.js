@@ -6,7 +6,7 @@ const port = process.env.port || 3000;
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
-  const { firstName, lastName, email } = req.body;
+  const { firstName, lastName, email,password } = req.body;
   console.log("i am line 8", req.body);
 
   try {
@@ -14,7 +14,7 @@ app.post("/signup", async (req, res) => {
       throw new Error("firstName and email is required");
     }
 
-    const user = new USER({ firstName, lastName, email });
+    const user = new USER({ firstName, lastName, email,password });
 
     await user.save();
 
